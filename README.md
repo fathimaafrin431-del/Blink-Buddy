@@ -44,6 +44,7 @@ src/
   sound.js              Sound effects
   style.css             Styles
 assets/               Model files (face_landmarker.task) and vision task assets
-License
 
+
+License
 MIT
