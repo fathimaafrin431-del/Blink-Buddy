@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net 'unsafe-eval' 'wasm-unsafe-eval' blob:; connect-src 'self' https://cdn.jsdelivr.net https://storage.googleapis.com data: blob:; worker-src 'self' blob:; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; media-src 'self' blob:;" />
+<title>Blink Popper</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+    <h1>👁️ BLINK POPPER</h1>
+    <p class="subtitle">Blink 20 times to BOOM!</p>
+
+    <div class="count-display" id="countLabel">0 / 20</div>
+
+    <div class="progress-track">
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <div class="webcam-wrap">
+      <video id="video" autoplay muted playsinline></video>
+      <div class="camera-status" id="cameraStatus">Camera: Ready to start</div>
+      <div class="face-badge" id="faceBadge">Position face in view</div>
+    </div>
+
+    <div class="tracking-controls">
+      <button id="startBtn" class="btn btn-start">▶ START (RUN IN BG)</button>
+      <button id="stopBtn" class="btn btn-stop" disabled>⏹ STOP (CAMERA OFF)</button>
+    </div>
+
+    <div class="camera-note" id="cameraNote">
+      <div id="cameraNoteText">
+        Camera unavailable — you can click START or test using the TEST EXPLOSION button.
+      </div>
+      <div class="camera-actions">
+        <button id="openSettingsBtn" class="btn btn-secondary" style="display: none;">⚙️ Open Windows Camera Privacy Settings</button>
+      </div>
+    </div>
+
+    <div class="controls">
+      <button id="testBtn" class="btn btn-primary">💥 TEST EXPLOSION</button>
+      <button id="resetBtn" class="btn btn-secondary">RESET</button>
+      <button id="muteBtn" class="btn btn-ghost">🔊 Sound: On</button>
+    </div>
+
+    <p class="hint">Press <kbd>B</kbd> to simulate a blink &middot; <kbd>R</kbd> to reset</p>
+
+    <details class="debug-panel" id="debugPanel" open>
+      <summary>Debug panel</summary>
+      <div class="debug-grid">
+        <div>Camera:</div><div id="debugCamera">-</div>
+        <div>Face detected:</div><div id="debugFace">NO</div>
+        <div>Left eye:</div><div id="debugLeftEye">-</div>
+        <div>Right eye:</div><div id="debugRightEye">-</div>
+        <div>EAR Left:</div><div id="debugEarLeft">-</div>
+        <div>EAR Right:</div><div id="debugEarRight">-</div>
+        <div>Blink state:</div><div id="debugState">-</div>
+        <div>Blink count:</div><div id="debugCount">0 / 20</div>
+      </div>
+      <div class="debug-log-title">Live Diagnostics:</div>
+      <div class="debug-logs" id="debugLogs"></div>
+      <div style="margin-top: 8px;">
+        <button id="devtoolsBtn" class="btn btn-ghost" style="padding: 6px 12px; font-size: 0.78rem;">🛠️ Toggle DevTools (F12)</button>
+      </div>
+    </details>
+  </div>
+
+  <script type="module" src="renderer.js"></script>
+</body>
+</html>

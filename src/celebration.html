@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; media-src 'self' data:;" />
+<style>
+  html, body {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    background: transparent;
+    overflow: hidden;
+    -webkit-app-region: no-drag;
+    cursor: default;
+    user-select: none;
+  }
+
+  #celebration-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: block;
+  }
+
+  #celebration-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    z-index: 10;
+  }
+
+  #celebration-text {
+    transform: scale(0);
+    font-family: 'Arial Black', 'Impact', 'Segoe UI Black', sans-serif;
+    font-size: 11vw;
+    font-weight: 900;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #ffe600;
+    -webkit-text-stroke: 5px #1a0200;
+    background: linear-gradient(180deg, #ffffff 0%, #ffe600 35%, #ff7700 75%, #d90429 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 8px 0 #240004) drop-shadow(0 14px 28px rgba(255, 80, 0, 0.85));
+    white-space: nowrap;
+    line-height: 1.1;
+  }
+
+  #celebration-subtext {
+    transform: scale(0);
+    font-family: 'Arial Black', 'Segoe UI Black', sans-serif;
+    font-size: 3.5vw;
+    font-weight: 800;
+    letter-spacing: 2px;
+    color: #ffffff;
+    -webkit-text-stroke: 3px #1a0200;
+    filter: drop-shadow(0 4px 0 #240004) drop-shadow(0 8px 16px rgba(0, 0, 0, 0.6));
+    margin-top: -10px;
+    white-space: nowrap;
+  }
+</style>
+</head>
+<body>
+  <canvas id="celebration-canvas"></canvas>
+  <div id="celebration-container">
+    <div id="celebration-text"></div>
+    <div id="celebration-subtext"></div>
+  </div>
+  <script type="module" src="celebration.js"></script>
+</body>
+</html>
